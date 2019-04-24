@@ -1,0 +1,23 @@
+{
+	"status": "0",
+	"msg": "",
+	"result": [{
+			"productId": "100001",
+			"productName": "oneplus",
+			"productPrice": "2499"
+		
+		},
+		{
+			"productId": "100002",
+			"productName": "耳机",
+			"productPrice": "249"
+			
+		}, 
+		{
+			"productId": "100003",
+			"productName": "收纳架米",
+			"productPrice": "24"
+			
+		}
+	]
+}
