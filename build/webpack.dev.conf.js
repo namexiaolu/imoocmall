@@ -11,11 +11,11 @@ const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')
 
 const axios = require('axios');
-const express = require('express');
-const app = express();
-var apiRoutes = express.Router();
-var goodsData = require('./../mock/goods.json');//自己创建的json数据
-app.use('/goods',apiRoutes);
+// const express = require('express');
+// const app = express();
+// var apiRoutes = express.Router();
+// var goodsData = require('./../mock/goods.json');//自己创建的json数据
+// app.use('/goods',apiRoutes);
 
 // // // 增加express
 // const express = require('express')
@@ -100,11 +100,11 @@ const devWebpackConfig = merge(baseWebpackConfig, {
 			poll: config.dev.poll,
 		},
 		
-		before(app){
-			app.get('/goods',(req,res)=>{
-				res.json(goodsData)
-			})
-		}
+		// before(app){
+		// 	app.get('/goods',(req,res)=>{
+		// 		res.json(goodsData)
+		// 	})
+		// }
 
 
 

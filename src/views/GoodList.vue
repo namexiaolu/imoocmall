@@ -24,11 +24,13 @@
 		<br>
 		<router-link to="/cert">跳转到购物车</router-link>
 		<br>
+    <a @click="sortGoods"  href="javascript:;">排序</a>
 
 		<ul>
 			<li v-for="item in goodsList">
-				<div class="name">{{item.productId}}</div>
-				<div class="price">{{item.productName}}</div>
+				<div class="id">{{item.productId}}</div>
+				<div class="name">{{item.productName}}</div>
+        <div class="price">{{item.salePrice}}</div>
 
 			</li>
 		</ul>
@@ -52,6 +54,9 @@
 		data() {
 			return {
 				goodsList: [],
+        sortFlag:true,
+        page:1,
+        pageSize:2,
 				priceFilter:[
 					{
 						startPrice:"0.00",
@@ -65,7 +70,7 @@
 						startPrice:"1000.00",
 						endPrice:"2000.00"
 					}
-					
+
 				]
 			}
 		},
@@ -79,11 +84,25 @@
 		},
 		methods: {
 			getGoodsList() {
-				axios.get("/goods").then((result) => {
+			  var param = {
+			    page:this.page,
+          pageSize: this.pageSize,
+          sort:this.sortFlag?1:-1,
+        };
+
+				axios.get("/goods",{
+				  params:param
+        }).then((result) => {
 					var res = result.data;
-					this.goodsList = res.result;
+					this.goodsList = res.result.list;
 				})
-			}
+			},
+      sortGoods(){
+			  this.sortFlag = !this.sortFlag;
+			  this.page = 1;
+			  this.getGoodsList();
+      }
+
 		}
 	}
 </script>
